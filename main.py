@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 
 # import everything from our constants module
 from constants import *
@@ -35,6 +36,11 @@ def main():
             
         for obj in updatable:
             obj.update(dt)
+        
+        for asteroid in asteroids:
+            if player.collision_check(asteroid) == True:
+                print("Game Over!")
+                sys.exit()
 
         screen.fill("black")
         
